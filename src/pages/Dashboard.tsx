@@ -11,8 +11,7 @@ import {
   LogOut,
   PieChart,
   Calendar,
-  DollarSign,
-  Users
+  DollarSign
 } from 'lucide-react';
 
 interface BudgetData {
@@ -21,11 +20,7 @@ interface BudgetData {
   spent: number;
 }
 
-interface DashboardProps {
-  onNavigateToGroups: () => void;
-}
-
-export function Dashboard({ onNavigateToGroups }: DashboardProps) {
+export function Dashboard() {
   const { user, signOut } = useAuth();
   const [budgets, setBudgets] = useState<BudgetData[]>([]);
   const [totalSpent, setTotalSpent] = useState(0);
@@ -202,7 +197,7 @@ export function Dashboard({ onNavigateToGroups }: DashboardProps) {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <button
             onClick={() => setShowAddExpense(true)}
             className="bg-blue-600 text-white rounded-xl p-6 hover:bg-blue-700 transition flex items-center justify-between group"
@@ -212,17 +207,6 @@ export function Dashboard({ onNavigateToGroups }: DashboardProps) {
               <div className="text-2xl font-bold">Quick Entry</div>
             </div>
             <Plus className="w-8 h-8 group-hover:scale-110 transition" />
-          </button>
-
-          <button
-            onClick={onNavigateToGroups}
-            className="bg-white rounded-xl p-6 hover:shadow-md transition flex items-center justify-between group border-2 border-gray-200"
-          >
-            <div className="text-left">
-              <div className="text-sm font-medium text-gray-600 mb-1">Manage</div>
-              <div className="text-2xl font-bold text-gray-900">Groups</div>
-            </div>
-            <Users className="w-8 h-8 text-gray-400 group-hover:text-blue-600 transition" />
           </button>
 
           <button className="bg-white rounded-xl p-6 hover:shadow-md transition flex items-center justify-between group border-2 border-gray-200">
